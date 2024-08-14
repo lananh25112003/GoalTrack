@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Tracker</title>
+    <link rel="stylesheet" href="/asset/css/style.css"> <!-- Link tới file CSS của bạn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Thư viện đồ thị -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>GoalTracker</h1>
+            </div>
+            <nav>
+                <div class="nav-links-container">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#information">Goal Management</a></li>
+                        <li><a href="#information">Progress Tracking</a></li>
+                        <li><a href="#information">Reports and Analysis</a></li>
+                        <li><a href="#information">Notifications and Reminders</a></li>
+                        <li><a href="#information">Profile and Settings</a></li>
+                    </ul>
+                </div>
+                <button class="register-button">Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section id="home" class="banner">
+        <h2>Your Goals, Our Guidance</h2>
+        <p>Achieve your goals with ease and efficiency. Track your progress and stay motivated!</p>
+    </section>
+
+    <!-- Introduction -->
+    <section class="introduction">
+        <h2>How to Achieve Your Goals</h2>
+        <p>Setting and achieving goals can be challenging, but with the right tools and strategies, you can make your objectives a reality. Our goal tracking system helps you set clear targets, monitor your progress, and stay focused on your path to success. Break down your goals into manageable tasks, track your achievements, and celebrate your milestones along the way.</p>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts">
+        <h2>Goal Completion Status</h2>
+        <div class="chart-container">
+            <canvas id="goalCompletionChart1"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="goalCompletionChart2"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="goalCompletionChart3"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="goalCompletionChart4"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="goalCompletionChart5"></canvas>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>GoalTracker</h1>
+            </div>
+            <div class="footer-contact">
+                <p>Contact us: <a href="mailto:info@goaltracker.com">info@goaltracker.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Charts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx1 = document.getElementById('goalCompletionChart1').getContext('2d');
+            var ctx2 = document.getElementById('goalCompletionChart2').getContext('2d');
+            var ctx3 = document.getElementById('goalCompletionChart3').getContext('2d');
+            var ctx4 = document.getElementById('goalCompletionChart4').getContext('2d');
+            var ctx5 = document.getElementById('goalCompletionChart5').getContext('2d');
+
+            var chartsData = [
+                { id: 'goalCompletionChart1', label: 'Goal 1', data: [65, 59, 80, 81, 56], backgroundColor: 'rgba(75, 192, 192, 0.2)', borderColor: 'rgba(75, 192, 192, 1)' },
+                { id: 'goalCompletionChart2', label: 'Goal 2', data: [45, 67, 70, 51, 76], backgroundColor: 'rgba(153, 102, 255, 0.2)', borderColor: 'rgba(153, 102, 255, 1)' },
+                { id: 'goalCompletionChart3', label: 'Goal 3', data: [85, 72, 90, 77, 68], backgroundColor: 'rgba(255, 159, 64, 0.2)', borderColor: 'rgba(255, 159, 64, 1)' },
+                { id: 'goalCompletionChart4', label: 'Goal 4', data: [55, 69, 78, 85, 64], backgroundColor: 'rgba(255, 99, 132, 0.2)', borderColor: 'rgba(255, 99, 132, 1)' },
+                { id: 'goalCompletionChart5', label: 'Goal 5', data: [70, 61, 85, 88, 90], backgroundColor: 'rgba(54, 162, 235, 0.2)', borderColor: 'rgba(54, 162, 235, 1)' }
+            ];
+
+            chartsData.forEach(function(chartData) {
+                new Chart(document.getElementById(chartData.id), {
+                    type: 'line',
+                    data: {
+                        labels: ['January', 'February', 'March', 'April', 'May'],
+                        datasets: [{
+                            label: chartData.label,
+                            data: chartData.data,
+                            backgroundColor: chartData.backgroundColor,
+                            borderColor: chartData.borderColor,
+                            borderWidth: 1,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                beginAtZero: true
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
